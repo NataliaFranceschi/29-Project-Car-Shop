@@ -13,13 +13,13 @@ class MotorcycleService {
     return this.createMotorcycleDomain(newMotorcycle);
   }
 
-  public async getAllMotorcycles() {
+  public async getAll() {
     const motorcycles = await this.motorcycleODM.getAll();
     return Promise.all(motorcycles
       .map((motorcycle: IMotorcycle) => this.createMotorcycleDomain(motorcycle)));
   }
 
-  public async getMotorcycleById(id: string) {
+  public async getById(id: string) {
     const motorcycle = await this.motorcycleODM.getById(id);
     if (motorcycle === null) {
       throw new Error('Motorcycle not found');
