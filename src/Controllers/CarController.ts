@@ -1,15 +1,17 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import CarService from '../Services/CarService';
 import ICar from '../Interfaces/ICar';
 
 class CarController {
   private req: Request;
   private res: Response;
+  private next: NextFunction;
   private service: CarService;
 
-  constructor(req: Request, res: Response) {
+  constructor(req: Request, res: Response, next:NextFunction) {
     this.req = req;
     this.res = res;
+    this.next = next;
     this.service = new CarService();
   }
 
@@ -23,8 +25,32 @@ class CarController {
       doorsQty: this.req.body.doorsQty,
       seatsQty: this.req.body.seatsQty,
     };
-    const newCar = await this.service.create(car);
-    return this.res.status(201).json(newCar);
+
+    try {
+      const newCar = await this.service.create(car);
+      return this.res.status(201).json(newCar);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async getAllCars() {
+    try {
+      const cars = await this.service.getAllCars();
+      return this.res.status(200).json(cars);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async getCarById() {
+    const { id } = this.req.params;
+    try {
+      const cars = await this.service.getCarById(id);
+      return this.res.status(200).json(cars);
+    } catch (error) {
+      this.next(error);
+    }
   }
 }
 
