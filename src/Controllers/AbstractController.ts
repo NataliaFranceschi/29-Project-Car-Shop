@@ -1,18 +1,17 @@
-/* import { NextFunction, Request, Response } from 'express';
-import CarService from '../Services/CarService';
-import MotorcycleService from '../Services/MotorcycleService';
+import { NextFunction, Request, Response } from 'express';
+import AbstractService from '../Services/Abstract Service';
 
-class AbstractController<T> {
+class AbstractController<T, D> {
   private req: Request;
   private res: Response;
   private next: NextFunction;
-  private service: CarService | MotorcycleService;
+  private service: AbstractService<T, D>;
 
   constructor(
     req: Request, 
     res: Response, 
     next:NextFunction, 
-    service: CarService | MotorcycleService,
+    service: AbstractService<T, D>,
   ) {
     this.req = req;
     this.res = res;
@@ -64,4 +63,3 @@ class AbstractController<T> {
 }
 
 export default AbstractController;
-*/
