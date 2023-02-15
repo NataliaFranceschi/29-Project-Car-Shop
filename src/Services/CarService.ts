@@ -19,7 +19,7 @@ class CarService {
   }
 
   public async getCarById(id: string) {
-    const car = await this.carODM.getCarById(id);
+    const car = await this.carODM.getById(id);
     if (car === null) {
       throw new Error('Car not found');
     }
