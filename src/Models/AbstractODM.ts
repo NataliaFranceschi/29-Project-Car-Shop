@@ -10,6 +10,12 @@ abstract class AbstractODM<T> {
     this.modelName = modelName;
     this.model = models[this.modelName] || model(this.modelName, this.schema);
   }
+
+  public isValid(id: string) {
+    if (!isValidObjectId(id)) {
+      throw new Error('Invalid mongo id');
+    } 
+  }
   
   public async create(obj: T): Promise<T> {
     return this.model.create({ ...obj });
@@ -20,20 +26,22 @@ abstract class AbstractODM<T> {
   }
 
   public async getById(id: string): Promise<T | null> {
-    if (!isValidObjectId(id)) {
-      throw new Error('Invalid mongo id');
-    } 
+    this.isValid(id);
     return this.model.findOne({ _id: id });
   }
 
   public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('Invalid mongo id');
-
+    this.isValid(_id);
     return this.model.findByIdAndUpdate(
       { _id },
       { ...obj },
       { new: true },
     );
+  }
+
+  public async delete(id: string) {
+    this.isValid(id);
+    return this.model.deleteOne({ _id: id });
   }
 }
   

@@ -36,6 +36,14 @@ abstract class AbstractService<T, D> {
     }
     return this.createVehicleDomain(vehicle);
   }
+
+  public async delete(id: string) {
+    const vehicle = await this.abstractODM.delete(id);
+    if (vehicle.deletedCount === 0) {
+      throw new Error(`${this.vehicleType} not found`);
+    }
+    return vehicle;
+  }
 }
 
 export default AbstractService; 
