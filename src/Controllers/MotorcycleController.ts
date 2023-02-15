@@ -33,6 +33,25 @@ class MotorcycleController {
       this.next(error);
     }
   }
+
+  public async getAllMotorcycles() {
+    try {
+      const motorcycles = await this.service.getAllMotorcycles();
+      return this.res.status(200).json(motorcycles);
+    } catch (error) {
+      this.next(error);
+    }
+  }
+
+  public async getMotorcycleById() {
+    const { id } = this.req.params;
+    try {
+      const motorcycle = await this.service.getMotorcycleById(id);
+      return this.res.status(200).json(motorcycle);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }
 
 export default MotorcycleController;
