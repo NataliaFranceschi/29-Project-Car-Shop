@@ -1,13 +1,12 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Boas vindas ao repositório do projeto Car Shop
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Projeto desenvolvido no curso da Trybe ao final do bloco 29* do Módulo 3 - Desenvolvimento Back-end.<br>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+<strong>*Bloco 29: APIs OO e NoSQL</strong><br>
+ 29.1 - APIs orientadas a objeto e NoSQL: POO e ODMs<br>
+ 29.2 - APIs orientadas a objeto e NoSQL: Herança e Abstração<br>
+ 29.3 - Projeto Car Shop<br>
+ 
+No projeto construi uma API com CRUD para gerenciar uma concessionária de veículos utilizando o Mongoose para facilitar o acesso do banco de dados MongoDB.
+O projeto foi desenvolvido em Typescript, aplicando pricípios de programação orientada a objeto (POO) como  Herança, Abstração, Encapsulamento e Polimorfismo, utilizado em todas as camadas da aplicação (Model, Service e Controller)
+Também foram realizados testes unitários para a camada Service utilizando sinon, chai e mongoose.
